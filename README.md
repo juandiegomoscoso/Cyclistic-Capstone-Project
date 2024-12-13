@@ -61,3 +61,137 @@ My insights will assist the marketing team to designing targeted campaigns to in
 - **Selected Tools**: To clean the data, I decided to use SQL Server for its ability to handle large datasets efficiently. To visualize the data, I chose Tableau Public for its capability to create interactive and visually engaging dashboards.
 
 - **Importing the Data**: First, I created a database called “CyclisticBikeshare” in SQL server and imported each csv file into its own table using SQL Server import and export wizard. Then, I combined the tables from the different files into a single table called “rides_data”.
+
+
+## Process Phase
+
+After importing the data, I performed the following data cleaning steps:
+
+1. Checked for Duplicates: Verified that there were no duplicated rows in the dataset.
+
+```sql
+WITH CTE_row_count AS (
+	SELECT *, ROW_NUMBER() OVER (PARTITION BY ride_id, rideable_type, started_at, ended_at, 
+		start_station_name, start_station_id, end_station_name, end_station_id, start_lat, 
+		start_lng, end_lat, end_lng, member_casual ORDER BY ride_id) AS row_count
+	FROM dbo.rides_data)
+SELECT COUNT(*)
+FROM CTE_row_count
+WHERE row_count > 1;
+````
+
+2. Validated Column Values:
+
+    - Ensured all values in the member_casual column are valid: either "member" or "casual".
+      
+    ```sql
+    SELECT DISTINCT(member_casual)
+    FROM dbo.rides_data;
+    ```
+
+    - Ensured all values in the rideable_type column are valid: "electric_bike", "classic_bike", or "docked_bike".
+
+    ```sql
+    SELECT DISTINCT(rideable_type)
+    FROM dbo.rides_data;
+    ```
+
+3. Checked for Missing Values: Verified if there were any NULL values in the started_at and ended_at columns.
+   
+```sql
+SELECT COUNT(ride_id)
+FROM dbo.rides_data
+WHERE ended_at IS NULL;
+
+SELECT COUNT(ride_id)
+FROM dbo.rides_data
+WHERE started_at IS NULL;
+```
+
+4. Calculated Ride Duration:
+    
+    - Created a new column, ride_length, to store the ride duration.
+      
+    ```sql
+    ALTER TABLE dbo.rides_data
+    ADD ride_length INT;
+    ```
+
+    - Computed the duration by subtracting the started_at timestamp from the ended_at timestamp.
+      
+    ```sql
+    UPDATE dbo.rides_data
+    SET ride_length = DATEDIFF(SECOND, started_at, ended_at);
+    ```
+
+5. Filtered Outliers:
+   
+    - Removed rides with negative durations.
+      
+   ```sql
+   DELETE FROM dbo.rides_data
+   WHERE ride_length < 0;
+    ```
+
+    - Removed rides lasting longer than a day.
+      
+    ```sql
+    DELETE FROM dbo.rides_data
+    WHERE ride_length > 86400; -- A day has 86400 seconds
+    ```
+    
+    - Removed rides shorter than 30 seconds, as most of these started and ended at the same station, indicating likely user cancellation.
+    
+    ```sql
+    DELETE FROM dbo.rides_data
+    WHERE ride_length < 30;
+    ```
+
+6. Added Time-Based Columns:
+   
+    - Added the following columns to analyze user behavior over time:
+      
+        * week_day (day of the week)
+          
+        ```sql
+        ALTER TABLE dbo.rides_data
+        ADD week_day NVARCHAR(50);
+        
+        UPDATE dbo.rides_data
+        SET week_day = DATENAME(dw, started_at);
+        ```
+        
+        * month_week (week of the month)
+    
+        ```sql
+        ALTER TABLE dbo.rides_data
+        ADD month_day INT;
+        
+        UPDATE dbo.rides_data
+        SET month_day = DATEPART(dd, started_at);
+        ```
+
+        * month (month of the year)
+    
+        ```sql
+        ALTER TABLE dbo.rides_data
+        ADD month NVARCHAR(50);
+        
+        UPDATE dbo.rides_data
+        SET month = DATENAME(mm, started_at);
+        ```
+
+7. Dropped Irrelevant Columns:
+    - Dropped start_station and end_station due to many NULL values and their irrelevance to the analysis.
+      
+    ```sql
+    ALTER TABLE dbo.rides_data
+    DROP COLUMN start_station_name, start_station_id, end_station_name, end_station_id;
+    ```
+	
+    - Dropped latitude and longitude columns, as ride duration was determined to be a better indicator of bike usage.
+
+    ```sql
+    ALTER TABLE dbo.rides_data
+    DROP COLUMN start_lat, start_lng, end_lat, end_lng;
+    ```
