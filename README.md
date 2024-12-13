@@ -12,3 +12,29 @@ Cyclistic’s finance analysts have concluded that annual members are much more 
 Moreno has set a clear goal: Design marketing strategies aimed at converting casual riders into annual members. In order to do that, however, the team needs to better understand how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics. 
 
 As a junior data analyst working on the marketing analyst team at Cyclistic, under the direction of Moreno, my role is to analyze Cyclistic historic bike trip data to spot trends and make insight about how casual riders and annual members use Cyclistic bikes differently. From these insights, my team will design a new marketing strategy to convert casual riders into annual members. 
+
+## Ask Phase
+
+Three questions will guide the future marketing program:
+1. How do annual members and casual riders use Cyclistic bikes differently?
+2. Why would casual riders buy Cyclistic annual memberships?
+3. How can Cyclistic use digital media to influence casual riders to become members?
+
+Moreno has assigned me the first question to answer: How do annual members and casual riders use Cyclistic bikes differently?
+
+Key Components
+    • Business Task
+      Analyze the differences in bike usage between casual riders and annual members to design a marketing strategy that converts casual riders into annual members. 
+      
+    • Problem Statement
+      Identify trends in bike usage patterns between annual and casual members to provide actionable insights for the marketing team.
+      
+    • Impact on Business Decisions
+      My insights will assist the marketing team to designing targeted campaigns to increase annual memberships by conveting casual riders.
+      
+    • Who are the stakeholders?
+        ◦ Cyclistic Management: This includes the director of marketing, Lily Moreno, and other executives who are interested in increasing profitability and growth.
+        ◦ Marketing Team: Analysts and strategists that design and implement the marketing strategies based on the data analysis.
+        ◦ Data Analysts: My team, responsible for identifying trends and insights.
+        ◦ Casual Riders: Users who purchase single-ride or full-day passes, whose behaviors and preferences need to be understood to convert them into annual members.
+        ◦ Annual Members: Current subscribers whose behaviors serve as a reference for strategies to atract casual riders.
