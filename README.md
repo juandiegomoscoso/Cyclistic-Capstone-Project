@@ -195,3 +195,77 @@ WHERE started_at IS NULL;
     ALTER TABLE dbo.rides_data
     DROP COLUMN start_lat, start_lng, end_lat, end_lng;
     ```
+
+
+## Analyze Phase
+
+After the cleaning process, the data is ready to analize. I use SQL Server for the analize phase.
+
+The steps I performed in my analysis were the following:
+
+1. Checked the total number of rides
+    ```sql
+    SELECT COUNT(*)
+    FROM dbo.rides_data;
+    ```
+    - Result: The total number of rides, after cleaning, is 5 649 726
+
+2.  Counted the number of rides by members and casual users.
+    ```sql
+    SELECT member_casual AS user_status, COUNT(ride_id) AS user_count
+    FROM dbo.rides_data
+    GROUP BY member_casual;
+    ```
+    - Result: The dataset contains 3 638 600 members and 2 011 126 casual users
+      
+3. Calculated the average ride length in minutes.
+    ```sql
+    SELECT CONCAT(AVG(CAST(ride_length AS BIGINT)) / 60.0, ' min') AS avg_ride_length -- I cast ride_lenght to BIGINT to avoid arithmetic overflow
+    FROM dbo.rides_data;
+    ```
+    - Result: The average ride length is approximately 15.63 minutes
+      
+4. Found the length of the longest ride in minutes.
+    ```sql
+    SELECT MAX(ride_length) / 60.0 AS longest_length
+    FROM dbo.rides_data;
+    ```
+    - Result: The longest ride lasted approximately 1 439.92 minutes
+      
+5. Identified the days of the week with the highest and lowest bike rentals.
+    ```sql
+    SELECT week_day, COUNT(*) AS bike_rents
+    FROM dbo.rides_data
+    GROUP BY week_day
+    ORDER BY bike_rents DESC;
+    ```
+    - Result: Saturday had the most bike rentals with 894 901 bike rides, follewed by Thursday with 844 573 bike rides. Sunday had the lest bike rentals with only 728 595, Monday was the second day with lest bike rental with 738 103.
+      
+6. Found the month with the most and less bike rentals.
+    ```sql
+    SELECT month, COUNT(*) AS bike_rents
+    FROM dbo.rides_data
+    GROUP BY month
+    ORDER BY bike_rents DESC;
+    ```
+    - Result: August had the highest number of rentals: 759 155, followed by July with: 754 123. On the other hand, the month with the lowest number of rental was January with 141 944 and February with 220 317.
+      
+7. Calculated the average ride length for members and casual users separately.
+    ```sql
+    SELECT member_casual, CONCAT(AVG(CAST(ride_length AS BIGINT)) / 60.0, ' min') AS avg_ride_length
+    FROM dbo.rides_data
+    GROUP BY member_casual;
+    ```
+    - Result: Casual users have an average ride length of approximately 21.42 minutes and member users have an average ride length of approximately 12.44 minutes
+
+8. Calculated the average ride length (in minutes) for casual and member users for each day of the week. 
+    ```sql
+    WITH RideLength (user_type, week_day, ride_length) AS (
+	SELECT member_casual, week_day, CAST(ride_length AS BIGINT) / 60.0
+	FROM dbo.rides_data
+    )
+    SELECT *
+    FROM RideLength
+    PIVOT(AVG(ride_length) FOR week_day IN([Monday], [Tuesday], [Wednesday], [Thursday], [Friday], [Saturday], [Sunday])) p;
+    ```
+    - Result: Casual users tend to rent the bikes for more time.
