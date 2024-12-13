@@ -56,7 +56,7 @@ My insights will assist the marketing team to designing targeted campaigns to in
 
 - **Relevance to Business Questions**: The data provides insights into the differences in bike usage patterns between casual riders and annual members, helpung to identify key behaviors for marketing strategies.
 
-- **Data Limitations**: The data does not include personal information that can identify a user, ensuring privaxy but restricting into user-specific patterns.
+- **Data Limitations**: The data does not include personal information that can identify a user, ensuring privacy but restricting insights into user-specific patterns.
 
 - **Selected Tools**: To clean the data, I decided to use SQL Server for its ability to handle large datasets efficiently. To visualize the data, I chose Tableau Public for its capability to create interactive and visually engaging dashboards.
 
