@@ -52,7 +52,7 @@ My insights will assist the marketing team to designing targeted campaigns to in
 
 - **Data Organization**: The data is organized in CSV files containing the rides for a one-month period. Each entry includes the start and end times, the start and end stations, the locations of the stations, the type of bike and the type of member for each ride.
 
-- **Credibility and Bias**: The data is provided by Cyclistic itself, which means that it is reliable and comprehensive, capturing all necessary trip details. Its regular updates ensure relevance and the inclusion of all riders supportes unbiased analysis.
+- **Credibility and Bias**: The data is provided by Cyclistic itself, which means that it is reliable and comprehensive, capturing all necessary trip details. Its regular updates ensure relevance and the inclusion of all riders supports unbiased analysis.
 
 - **Relevance to Business Questions**: The data provides insights into the differences in bike usage patterns between casual riders and annual members, helpung to identify key behaviors for marketing strategies.
 
