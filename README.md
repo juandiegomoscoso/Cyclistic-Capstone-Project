@@ -50,9 +50,9 @@ My insights will assist the marketing team to designing targeted campaigns to in
 
 - **Data Used**: The last 12 months (June 2023 to June 2024) of Cyclistic’s historical trip data will be analized to indentify trends.
 	
-- **Data Location**: The data is stored in a public repository provided by Motivate International Inc., where monthly datasets are uploaded as new data becomes available. 
+- **Data Location**: The data is stored in this [public repository](https://divvy-tripdata.s3.amazonaws.com/index.html) provided by Motivate International Inc., where monthly datasets are uploaded as new data becomes available. 
 
-- **Data License**: The data is available to the public. Bikeshare grants a non-exclusive, royalty-free, limited, perpetual license to access, reproduce, analyze, copy, modify, distribute and use the Data for any lawful purpose. 
+- **Data License**: The data is available to the public. Bikeshare grants a non-exclusive, royalty-free, limited, perpetual license to access, reproduce, analyze, copy, modify, distribute and use the data for any lawful purpose. [Licence](https://divvybikes.com/data-license-agreement)
 
 - **Data Organization**: The data is organized in CSV files containing the rides for a one-month period. Each entry includes the start and end times, the start and end stations, the locations of the stations, the type of bike and the type of member for each ride.
 
