@@ -327,7 +327,7 @@ Based on the analysis, here are some recommendations for Cyclistic's marketing s
 
 3. **Weekend Specials**: Given that casual riders are more active on weekends, consider offering weekend-only promotions or activities that can convert casual riders into members.
 
-4. **Leisure and Commuting Benefits**: Highlight the dual benefits of Cyclistic bikes for both leisure and commuting. Create content that shows how members can enjoy the bikes for both purposes, promoting the versatility of an annual membership.
+4. **Leisure and Commuting Benefits**: Highlight the dual benefits of Cyclistic bikes for both leisure and commuting. Create content that shows how members can enjoy the bikes for both purposes.
 
 5. **User Experience Improvements**: Based on ride length and preferences for bike types, consider improving user experience by ensuring availability and maintenance of electric bikes and classic bikes, as these are preferred by casual riders and members respectively.
 
