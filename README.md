@@ -2,6 +2,10 @@
 
 ## Backgroud
 
+<p align="center">
+  <img src="images/cyclistc_logo.png" alt="Cyclistic Logo" width="300"/>
+</p>
+
 ### About Cyclistic:
 In 2016, Cyclistic launched a successful bike-share offering across Chicago. The bikes can be unlocked from one station and returned to any other station anytime.
 
@@ -277,6 +281,10 @@ Now it’s time to create a dashboard to present the findings.
 
 The goal of this analysis is to explore the differences in how casual riders and annual members use Cyclistic bikes. By identifying trends in bike usage patterns (such as rideable type preferences, time-based activity, and ride lengths) it aims to provide actionable insights for the marketing team. These findings will inform strategy to encourage casual riders to convert into annual members. 
 
+<br>
+
+![First Dashboard](images/Dashboard1.png)
+
 **Rides by User Type and Rideable Type**:
 
   - Casual riders and members prefer different types of bikes.
@@ -290,6 +298,11 @@ The goal of this analysis is to explore the differences in how casual riders and
 **Average Ride Length**:
 
   - Casual riders have a much longer average ride length (21.42 minutes) compared to members (12.45 minutes). This may indicate that casual riders use bikes for leisure or exploratory rides, whereas members may use bikes for routine or shorter commutes.
+
+<br>
+
+![Second Dashboard](images/Dashboard2.png)
+![Third Dashboard](images/Dashboard3.png)
 
 **Usage by Time**:
 
