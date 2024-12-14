@@ -269,3 +269,38 @@ The steps I performed in my analysis were the following:
     PIVOT(AVG(ride_length) FOR week_day IN([Monday], [Tuesday], [Wednesday], [Thursday], [Friday], [Saturday], [Sunday])) p;
     ```
     - Result: Casual users tend to rent the bikes for more time.
+
+
+## Share Phase
+
+Now it’s time to create a dashboard to present the findings.
+
+The goal of this analysis is to explore the differences in how casual riders and annual members use Cyclistic bikes. By identifying trends in bike usage patterns (such as rideable type preferences, time-based activity, and ride lengths) it aims to provide actionable insights for the marketing team. These findings will inform strategy to encourage casual riders to convert into annual members. 
+
+**Rides by User Type and Rideable Type**:
+
+  - Casual riders and members prefer different types of bikes.
+    - Casual riders use electric bikes (1.04M rides) slightly more than classic bikes (0.93M rides), with docked bikes being used very minimally (0.05M rides).
+    - Members show a preference for classic bikes (1.87M rides) over electric bikes (1.77M rides).
+
+**Total Rides by User Type**:
+
+  - Members account for 3.64M rides, significantly more than casual riders at 2.01M rides. Members are clearly the most frequent users.
+    
+**Average Ride Length**:
+
+  - Casual riders have a much longer average ride length (21.42 minutes) compared to members (12.45 minutes). This may indicate that casual riders use bikes for leisure or exploratory rides, whereas members may use bikes for routine or shorter commutes.
+
+**Usage by Time**:
+
+  - Monthly Trends:
+    * Casual riders’ activity peaks in the summer months (June to August) and declines sharply in winter, suggesting seasonal usage patterns likely tied to leisure activities.
+    * Members maintain more consistent usage throughout the year, with slight dips during the winter months.
+  - Weekly Trends:
+    * Casual riders are most active on weekends, whereas members use bikes primarily during weekdays, reflecting differences in purpose (leisure vs. commuting).
+  - Hourly Trends:
+    * Casual riders’ usage peaks in the afternoons, while members have two clear peaks: morning and evening, coinciding with typical commuting hours.
+  - Ride Length Trends:
+    * Casual riders consistently have longer average ride times than members, regardless of the time of day, week, or month. Ride lengths for casual riders also increase significantly on weekends.
+
+
